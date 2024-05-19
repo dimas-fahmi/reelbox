@@ -1,0 +1,104 @@
+{
+  "navigation_bar": [
+    {
+      "label": "Movies",
+      "icon": "bi-film",
+      "link": "/movies"
+    },
+    {
+      "label": "Shows",
+      "icon": "bi-tv",
+      "link": "/series"
+    },
+    {
+      "label": "Games",
+      "icon": "bi-controller",
+      "link": "/games"
+    },
+    {
+      "label": "Search",
+      "icon": "bi-search",
+      "link": "/search"
+    }
+  ],
+  "menu": [
+    {
+      "title": "Movies",
+      "icon": "bi-film",
+      "children": [
+        {
+          "label": "Just Released",
+          "link": "/movies/released"
+        },
+        {
+          "label": "Most Popular",
+          "link": "/movies/popular"
+        },
+        {
+          "label": "Upcoming Movies",
+          "link": "/movies/upcoming"
+        },
+        {
+          "label": "Best by Genres",
+          "link": "/movies/genres"
+        },
+        {
+          "label": "Our Favorites",
+          "link": "/blog/post/our-favorites-movies-of-all-times"
+        }
+      ]
+    },
+    {
+      "title": "Shows",
+      "icon": "bi-tv",
+      "children": [
+        {
+          "label": "Just Released",
+          "link": "/series/released"
+        },
+        {
+          "label": "Most Popular",
+          "link": "/series/popular"
+        },
+        {
+          "label": "Upcoming Shows",
+          "link": "/series/upcoming"
+        },
+        {
+          "label": "Best by Genres",
+          "link": "/series/genres"
+        },
+        {
+          "label": "Our Favorites",
+          "link": "/blog/post/our-favorites-shows-of-all-times"
+        }
+      ]
+    },
+    {
+      "title": "Games",
+      "icon": "bi-controller",
+      "children": [
+        {
+          "label": "Just Released",
+          "link": "/games/released"
+        },
+        {
+          "label": "Most Popular",
+          "link": "/games/popular"
+        },
+        {
+          "label": "Upcoming Games",
+          "link": "/games/upcoming"
+        },
+        {
+          "label": "Best by Genres",
+          "link": "/games/genres"
+        },
+        {
+          "label": "Our Favorites",
+          "link": "/blog/post/our-favorites-games-of-all-times"
+        }
+      ]
+    }
+  ]
+}

@@ -1,9 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+
+// Routing
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+// App
+import App from "./App";
+
+// CSS
 import "./css/directives.css";
+import "./css/style.css";
+import "./css/fonts.css";
+import "./css/bootstrap-icons.css";
+
+// Pages
 import HomePage from "./pages/HomePage/HomePage";
 import ContactPage from "./pages/ContactPage/ContactPage";
 
