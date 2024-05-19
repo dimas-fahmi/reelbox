@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NavBarOffMenuLayout = ({ navShowHandler, menu }) => {
   return (
-    <div className="p-4 h-[100%] max-w-[1440px] m-auto overflow-auto">
+    <div className="p-4 h-[100%] max-w-[1440px] m-auto overflow-auto no-scrollbar">
       <div className="header flex justify-between text-xl">
         <h2 className="border-l-8 border-yellow-300 ps-3 text-yellow-300 poppins-bold flex items-center">
           MENU
@@ -19,7 +19,10 @@ const NavBarOffMenuLayout = ({ navShowHandler, menu }) => {
       <div className="body mt-6 flex gap-4 flex-wrap border-t-2 pt-4 border-secondary-accent-emphasis ">
         {menu &&
           menu.map((item, index) => (
-            <div className="text-white poppins-regular" key={index}>
+            <div
+              className="text-white poppins-regular min-w-[280px]"
+              key={index}
+            >
               <h2 className="text-2xl poppins-bold">
                 <i className={`bi ${item["icon"]} me-2 text-yellow-300`}></i>
                 {item.title}

@@ -1,3 +1,7 @@
 body {
   min-height: 4800px;
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

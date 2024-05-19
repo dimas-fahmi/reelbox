@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NavigationBar from "./fragments/NavigationBar";
 import OffCanvas from "../OffCanvas/OffCanvas";
 import NavBarOffMenuLayout from "./fragments/NavBarOMLayout";
-import navlinks from "../../data/NavLink.json";
+import navlinks from "../../configs/NavLink.json";
 
 const NavBar = () => {
   // Variable Initializations

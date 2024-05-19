@@ -99,6 +99,58 @@
           "link": "/blog/post/our-favorites-games-of-all-times"
         }
       ]
+    },
+    {
+      "title": "Awards",
+      "icon": "bi-award",
+      "children": [
+        {
+          "label": "Movies & Shows Awards",
+          "link": "/awards"
+        },
+        {
+          "label": "Video Games Awards",
+          "link": "/awards/games"
+        },
+        {
+          "label": "ReelTalk Movie Of The Year",
+          "link": "/awards/movies/#1st"
+        },
+        {
+          "label": "ReelTalk Show Of The Year",
+          "link": "/awards/shows/#1st"
+        },
+        {
+          "label": "ReelTalk Game Of The Year",
+          "link": "/awards/game/#1s"
+        }
+      ]
+    },
+    {
+      "title": "More",
+      "icon": "bi-grid",
+      "children": [
+        {
+          "label": "About Us",
+          "link": "/about-us"
+        },
+        {
+          "label": "Our Contacts",
+          "link": "/contacts"
+        },
+        {
+          "label": "Our Partners",
+          "link": "/partners"
+        },
+        {
+          "label": "Become a Partner",
+          "link": "/sponsor"
+        },
+        {
+          "label": "Guestpost",
+          "link": "/guestpost"
+        }
+      ]
     }
   ]
 }
