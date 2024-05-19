@@ -1,12 +1,6 @@
 import React from "react";
 
-function OffCanvas({
-  show,
-  direction = "left",
-  area = "100%",
-  bg_color = "secondary-emphasis",
-  children,
-}) {
+function OffCanvas({ show, direction = "left", area = "100%", children }) {
   // Direction
   let activeCondition, disableCondition;
   switch (direction) {
@@ -37,7 +31,7 @@ function OffCanvas({
     <div
       className={`fixed ${direction} overflow-hidden transition-all duration-300 ease-in-out ${
         show ? activeCondition : disableCondition
-      } bg-${bg_color} z-50 `}
+      } bg-secondary-emphasis z-50 `}
     >
       {children}
     </div>
