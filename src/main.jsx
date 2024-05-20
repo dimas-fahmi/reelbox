@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // App
 import App from "./App";
+import { TMDBProvider } from "./context/TMDBContext";
 
 // CSS
 import "./css/directives.css";
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <TMDBProvider>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </TMDBProvider>
 );
