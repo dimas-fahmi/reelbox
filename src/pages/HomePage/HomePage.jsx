@@ -52,7 +52,7 @@ const HomePage = () => {
     setCooldown(true);
     setTimeout(() => {
       setCooldown(false);
-    }, 3000);
+    }, 1500);
   };
 
   // Rendering
@@ -116,7 +116,9 @@ const HomePage = () => {
                       <i className="bi bi-play me-2"></i>PLAY
                     </button>
                     <button
-                      className="px-4 py-2 transition-colors border border-white rounded-xl hover:bg-white hover:text-black quicksand-regular"
+                      className={`px-4 py-2 rounded-xl border border-white transition-all ${
+                        cooldown ? "opacity-50" : "opacity-100 active:scale-90"
+                      }`}
                       onClick={movieIndexHandler}
                     >
                       {cooldown ? (
@@ -240,7 +242,9 @@ const HomePage = () => {
                       <i className="bi bi-play me-2"></i>PLAY
                     </button>
                     <button
-                      className="px-4 py-2 transition-colors border border-white rounded-xl hover:bg-white hover:text-black quicksand-regular"
+                      className={`px-4 py-2 rounded-xl border border-white transition-all ${
+                        cooldown ? "opacity-50" : "opacity-100 active:scale-90"
+                      }`}
                       onClick={tvIndexHandler}
                     >
                       {cooldown ? (
