@@ -25,6 +25,7 @@ const HomePage = () => {
 
   // Movie Index Handler
   const movieIndexHandler = () => {
+    if (cooldown) return;
     if (movieIndex == 19) {
       setMovieIndex(0);
       cooldownHandler();
@@ -36,6 +37,7 @@ const HomePage = () => {
 
   // TV Index Handler
   const tvIndexHandler = () => {
+    if (cooldown) return;
     if (tvIndex == 19) {
       setTvIndex(0);
       cooldownHandler();
