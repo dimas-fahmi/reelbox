@@ -11,7 +11,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppinFont.variable} ${interFont.variable} antialiased`}
+        className={`dark ${poppinFont.variable} ${interFont.variable} antialiased`}
       >
         {children}
       </body>
