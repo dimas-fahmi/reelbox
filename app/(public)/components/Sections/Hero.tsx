@@ -19,7 +19,7 @@ const HeroSection = () => {
       </div>
 
       {/* Overlay Content */}
-      <div className="absolute inset-0 flex">
+      <div className="absolute inset-0 flex items-end pb-6 md:pb-12">
         {/* Start */}
         <div className="flex max-w-xl items-center p-4 md:px-12">
           {/* Content Wrapper */}

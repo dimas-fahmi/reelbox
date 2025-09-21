@@ -121,6 +121,10 @@
   }
 
   .layout-width {
-    @apply p-4 md:p-6 max-w-[1440px] mx-auto;
+    @apply p-4  md:px-6 max-w-[1440px] mx-auto;
+  }
+
+  .standard-transition {
+    @apply transition-all duration-300;
   }
 }
