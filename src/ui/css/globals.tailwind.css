@@ -112,6 +112,10 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+body {
+  scroll-behavior: smooth;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -127,4 +131,27 @@
   .standard-transition {
     @apply transition-all duration-300;
   }
+
+  .section-header {
+    @apply border-l-8 border-yellow-400 ps-4 p-2 font-header font-bold text-4xl;
+  }
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.drag-none {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+.glass {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(19.1px);
+  -webkit-backdrop-filter: blur(19.1px);
 }

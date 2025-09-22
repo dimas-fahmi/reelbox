@@ -15,9 +15,12 @@ const NavBar = () => {
         {/* Logo Section */}
         <div className="flex gap-2">
           {/* Logo */}
-          <div className="text-3xl font-header font-bold text-yellow-400 flex items-center gap-2">
+          <Link
+            href={"/"}
+            className="text-3xl font-header font-bold text-yellow-400 flex items-center gap-2"
+          >
             <span className="mt-2">ReelBox</span>
-          </div>
+          </Link>
 
           {/* Navigation */}
           <ul className="hidden md:flex font-body text-xs">

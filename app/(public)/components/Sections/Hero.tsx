@@ -71,9 +71,7 @@ const HeroSection = () => {
               className="mt-4 font-body font-extralight"
               aria-label="Movie Overview"
             >
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo
-              ullam quam, modi officiis sunt blanditiis distinctio commodi
-              dolores rem ipsum repellat totam odio et.
+              {`In Earth's future, a global crop blight and second Dust Bowl are slowly rendering the planet uninhabitable. Professor Brand (Michael Caine), a brilliant NASA physicist, is working on plans to save mankind by transporting Earth's population to a new home via a wormhole.`}
             </p>
 
             <div className="mt-4 flex items-center gap-3">
