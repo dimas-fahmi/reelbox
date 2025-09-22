@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { PlayerLoaderSkeleton } from "./PlayerLoader";
 import { Credits, Images, Movie, TVShow, Videos } from "@/src/lib/types/tmdb";
 import { useWatchStore } from "@/src/lib/stores/watch";
@@ -30,6 +30,9 @@ import {
 import { Film, Tv } from "lucide-react";
 import { Button } from "@/src/shadcn/components/ui/button";
 import { useUpdateEmbed } from "@/src/lib/hooks/useUpdateEmbed";
+import { SeasonPicker } from "./SeasonPicker";
+import { useFetchSeason } from "@/src/lib/hooks/queries/useFetchSeason";
+import { CollectionsEpisodeCard } from "@/src/ui/components/Collections/CollectionsEpisodeCard";
 
 export interface MainContent {
   result:
@@ -50,7 +53,15 @@ export interface MainContent {
 }
 
 const MainContent = ({ result, title, genres, mediaType }: MainContent) => {
-  const { embed, mainEmbedURL } = useWatchStore();
+  const { embed, mainEmbedURL, activeSeason, setActiveSeason } =
+    useWatchStore();
+
+  const { data: season } = useFetchSeason({
+    id: result?.id.toString(),
+    seasonNumber: activeSeason?.season_number,
+  });
+
+  const episodes = season?.result?.episodes;
 
   // Images
   const images = result?.images;
@@ -60,6 +71,20 @@ const MainContent = ({ result, title, genres, mediaType }: MainContent) => {
   // Credits
   const credits = result?.credits;
   const casts = credits?.cast;
+
+  // Sessions
+  const seasons = result?.seasons;
+
+  useEffect(() => {
+    if (!seasons || activeSeason) return;
+
+    const filterOutSpecials = seasons.filter(
+      (item) =>
+        item.name.toLocaleLowerCase() !== "specials" && item.season_number !== 0
+    );
+
+    setActiveSeason(filterOutSpecials[0]);
+  }, [seasons, result, setActiveSeason, activeSeason]);
 
   // Videos
   const videos = result?.videos?.results;
@@ -135,6 +160,29 @@ const MainContent = ({ result, title, genres, mediaType }: MainContent) => {
         >
           {embed?.embedSource === mainEmbedURL ? "Playing Movie" : "Play Movie"}
         </Button>
+      )}
+
+      {/* Section Seasons & Episodes */}
+      {result && mediaType === "tv" && seasons && (
+        <Section
+          id="seasons&episodes"
+          title="Seasons & Episodes"
+          classes={{ headerTitle: "text-xl", header: "flex justify-between" }}
+          headerContent={<SeasonPicker seasons={seasons} />}
+        >
+          <Collections>
+            {!episodes
+              ? Array(20)
+                  .fill(" ")
+                  .map((_item, index) => (
+                    <CollectionsVideoCardSkeleton key={index} />
+                  ))
+              : Array.isArray(episodes) &&
+                episodes.map((item) => (
+                  <CollectionsEpisodeCard key={item?.id} episode={item} />
+                ))}
+          </Collections>
+        </Section>
       )}
 
       {/* Section Videos */}
