@@ -45,7 +45,7 @@ const CollectionsCard = ({ data }: { data: TVShowResult | MovieResult }) => {
           width={280}
           height={280}
           src={poster}
-          alt={`Poster of ${title}`} // More descriptive alt text for better accessibility
+          alt={`Poster of ${title}`}
           className={`group-hover/card:brightness-50 group-hover/card:blur-md standard-transition w-full h-full drag-none`}
         />
       </figure>
@@ -79,7 +79,7 @@ const CollectionsCard = ({ data }: { data: TVShowResult | MovieResult }) => {
               role="listitem"
               aria-label="IMDb Rating"
             >
-              {Math.floor(data?.vote_average)}
+              {Math.floor(data?.vote_average) ?? ""}
             </span>
 
             {/* Genre */}

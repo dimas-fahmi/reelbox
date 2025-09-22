@@ -20,6 +20,8 @@ export const getGenre = (
   mediaType: "movie" | "tv",
   limit?: number
 ): string[] => {
+  if (genreIds?.length < 1 || !Array.isArray(genreIds)) return [];
+
   // Select the appropriate genre list based on mediaType
   const genreList = mediaType === "movie" ? genres.movies : genres.shows;
 
