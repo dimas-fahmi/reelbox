@@ -1,5 +1,5 @@
 import { useSidebarStore } from "@/src/lib/stores/sidebar";
-import { Film, House, LucideIcon, Monitor, Newspaper } from "lucide-react";
+import { Compass, Film, House, LucideIcon, Monitor } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
@@ -49,7 +49,7 @@ const NavigationSection = () => {
         <NavItem icon={House} text="Homepage" href={"/"} />
         <NavItem icon={Film} text="Movies" href={"/movies"} />
         <NavItem icon={Monitor} text="Shows" href={"/shows"} />
-        <NavItem icon={Newspaper} text="News" href={"/news"} />
+        <NavItem icon={Compass} text="Discover" href={"/discover"} />
       </nav>
     </section>
   );

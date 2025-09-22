@@ -15,6 +15,8 @@ export function truncateString(
   wordLimit: number,
   addEllipsis: boolean
 ): string {
+  if (!input) return "";
+
   // Split the input string into words
   const words = input.split(/\s+/);
 

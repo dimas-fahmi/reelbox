@@ -1,0 +1,29 @@
+"use client";
+
+import React from "react";
+import HeroSection from "./components/sections/HeroSection";
+import { useSearchStore } from "@/src/lib/stores/search";
+import { CollectionsCard } from "@/src/ui/components/Collections/CollectionsCard";
+
+const DiscoverPageIndex = () => {
+  const { data } = useSearchStore();
+  const result = data?.results;
+
+  console.log(result);
+
+  return (
+    <div>
+      {/* Hero */}
+      <HeroSection />
+
+      {/* Result */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-12">
+        {result &&
+          Array.isArray(result) &&
+          result.map((item) => <CollectionsCard key={item.id} data={item} />)}
+      </div>
+    </div>
+  );
+};
+
+export default DiscoverPageIndex;

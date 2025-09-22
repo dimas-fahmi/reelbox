@@ -1,7 +1,7 @@
 "use client";
 
 import { useSidebarStore } from "@/src/lib/stores/sidebar";
-import { Film, Menu, Newspaper, TvMinimal } from "lucide-react";
+import { Compass, Film, Menu, TvMinimal } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -37,9 +37,9 @@ const NavBar = () => {
               </Link>
             </li>
             <li className="px-4 flex items-center justify-center">
-              <Link href={"/news"} className="flex items-center gap-2">
-                <Newspaper className="w-5 h-5" />
-                News
+              <Link href={"/discover"} className="flex items-center gap-2">
+                <Compass className="w-5 h-5" />
+                Discover
               </Link>
             </li>
           </ul>

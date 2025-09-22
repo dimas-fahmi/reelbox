@@ -76,6 +76,10 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --clr-card: #1f2937;
+  --clr-1: #ffcc00; /* Yellow */
+  --clr-2: #ff8c00; /* Warm orange */
+  --clr-3: #ffdf00; /* Lighter yellow */
 }
 
 .dark {
@@ -110,10 +114,6 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
-}
-
-body {
-  scroll-behavior: smooth;
 }
 
 @layer base {
@@ -154,4 +154,46 @@ body {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(19.1px);
   -webkit-backdrop-filter: blur(19.1px);
+}
+
+.glowing::after,
+.glowing::before {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  inset: -0.2rem;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--clr-card),
+    var(--clr-1),
+    var(--clr-2),
+    var(--clr-3),
+    var(--clr-2),
+    var(--clr-1),
+    var(--clr-card)
+  );
+  border-radius: inherit;
+  animation: rotate 2.5s linear infinite;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.glowing::after {
+  filter: blur(3rem);
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 90deg;
+  inherits: false;
+}
+
+@keyframes rotate {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
 }
