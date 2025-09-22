@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { Season } from "../types/tmdb";
 
 export interface Embed {
   embedTitle: string;
@@ -11,8 +12,8 @@ export interface WatchStore {
   setMainEmbedURL: (n: string) => void;
 
   // Season State
-  activeSeason: number;
-  setActiveSeason: (n: number) => void;
+  activeSeason: Season | null;
+  setActiveSeason: (n: Season | null) => void;
 
   // Active Episode
   activeEpisode: number;
@@ -32,7 +33,7 @@ export const useWatchStore = create<WatchStore>((set) => ({
   setMainEmbedURL: (n) => set({ mainEmbedURL: n }),
 
   // Season State
-  activeSeason: 1,
+  activeSeason: null,
   setActiveSeason: (n) => set({ activeSeason: n }),
 
   // Episode State
@@ -44,5 +45,11 @@ export const useWatchStore = create<WatchStore>((set) => ({
   setEmbed: (n) => set({ embed: n }),
 
   // Reset Handler
-  reset: () => set({ activeSeason: 1, activeEpisode: 1, embed: null }),
+  reset: () =>
+    set({
+      activeSeason: null,
+      activeEpisode: 1,
+      embed: null,
+      mainEmbedURL: "",
+    }),
 }));

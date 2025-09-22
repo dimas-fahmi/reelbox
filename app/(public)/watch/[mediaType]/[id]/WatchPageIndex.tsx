@@ -6,7 +6,7 @@ import {
   YOUTUBE_EMBED_HOST,
 } from "@/src/lib/configs";
 import { getGenre } from "@/src/lib/utils/getGenre";
-import React, { Suspense, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useWatchStore } from "@/src/lib/stores/watch";
 import { useFetchDetails } from "@/src/lib/hooks/queries/useFetchDetails";
 import { useFetchRecommendations } from "@/src/lib/hooks/queries/useFetchRecommendations";
@@ -88,6 +88,9 @@ const WatchPageIndex = ({
     // Init first player
     if (!videos) return;
     const trailer = getTrailer(videos);
+
+    if (!trailer) return;
+
     // Construct
     const url = `${YOUTUBE_EMBED_HOST}/${trailer.key}`;
 

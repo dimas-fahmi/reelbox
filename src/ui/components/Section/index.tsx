@@ -13,14 +13,23 @@ export interface SectionProps {
   title: string;
   children?: React.ReactNode;
   classes?: SectionClasses;
+  headerContent?: React.ReactNode;
 }
 
-const Section = ({ id, children, classes, title }: SectionProps) => {
+const Section = ({
+  id,
+  children,
+  classes,
+  title,
+  headerContent,
+}: SectionProps) => {
   return (
     <section id={id} className={cn("mt-16", classes?.container)}>
       {/* Header */}
       <header className={cn("", classes?.header)}>
         <h1 className={cn("section-header", classes?.headerTitle)}>{title}</h1>
+
+        {headerContent}
       </header>
 
       {/* Section Content */}
