@@ -19,8 +19,6 @@ export default function Home() {
         title="Trending Movie"
       />
       <TrendingSections filter="tv" id="trendingTV" title="Trending Shows" />
-
-      <span className="block h-[4800px]"></span>
     </>
   );
 }
