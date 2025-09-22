@@ -88,6 +88,9 @@ const WatchPageIndex = ({
     // Init first player
     if (!videos) return;
     const trailer = getTrailer(videos);
+
+    if (!trailer) return;
+
     // Construct
     const url = `${YOUTUBE_EMBED_HOST}/${trailer.key}`;
 
