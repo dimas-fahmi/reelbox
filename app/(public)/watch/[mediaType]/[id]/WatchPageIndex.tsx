@@ -6,7 +6,7 @@ import {
   YOUTUBE_EMBED_HOST,
 } from "@/src/lib/configs";
 import { getGenre } from "@/src/lib/utils/getGenre";
-import React, { Suspense, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useWatchStore } from "@/src/lib/stores/watch";
 import { useFetchDetails } from "@/src/lib/hooks/queries/useFetchDetails";
 import { useFetchRecommendations } from "@/src/lib/hooks/queries/useFetchRecommendations";
