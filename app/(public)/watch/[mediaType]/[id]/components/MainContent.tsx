@@ -2,7 +2,15 @@
 
 import React, { useEffect } from "react";
 import { PlayerLoaderSkeleton } from "./PlayerLoader";
-import { Credits, Images, Movie, TVShow, Videos } from "@/src/lib/types/tmdb";
+import {
+  ContentRatings,
+  Credits,
+  Images,
+  Movie,
+  ReleaseDates,
+  TVShow,
+  Videos,
+} from "@/src/lib/types/tmdb";
 import { useWatchStore } from "@/src/lib/stores/watch";
 import {
   InformationBar,
@@ -33,6 +41,8 @@ import { useUpdateEmbed } from "@/src/lib/hooks/useUpdateEmbed";
 import { SeasonPicker } from "./SeasonPicker";
 import { useFetchSeason } from "@/src/lib/hooks/queries/useFetchSeason";
 import { CollectionsEpisodeCard } from "@/src/ui/components/Collections/CollectionsEpisodeCard";
+import { getContentRatings } from "@/src/lib/utils/getContentRatings";
+import AgeRating from "@/src/ui/components/AgeRating";
 
 export interface MainContent {
   result:
@@ -43,6 +53,8 @@ export interface MainContent {
           credits: Credits;
         } & {
           images: Images;
+        } & { content_ratings: ContentRatings } & {
+          release_dates: ReleaseDates;
         })
     | undefined;
   backdropImage: string;
@@ -94,6 +106,28 @@ const MainContent = ({ result, title, genres, mediaType }: MainContent) => {
 
   // Embed Mutation
   const mutate = useUpdateEmbed(true);
+
+  // Ratings
+  let ratings: string[] = [];
+
+  // Content Ratings
+  const contentRatings = result?.content_ratings?.results;
+
+  if (mediaType === "tv") {
+    ratings = contentRatings?.map((item) => item.rating) ?? [];
+  }
+
+  // Release Dates
+  const releaseDates = result?.release_dates?.results;
+
+  if (mediaType === "movie") {
+    ratings =
+      releaseDates?.map((item) => item.release_dates[0]?.certification) ?? [];
+  }
+
+  const rating = getContentRatings(ratings);
+
+  console.log(rating);
 
   return (
     <div className="flex-1 overflow-hidden">
@@ -150,6 +184,8 @@ const MainContent = ({ result, title, genres, mediaType }: MainContent) => {
         </p>
       )}
 
+      {rating && <AgeRating ageRating={rating} />}
+
       {result && mediaType === "movie" && (
         <Button
           className="block mt-6 w-full"
@@ -167,7 +203,11 @@ const MainContent = ({ result, title, genres, mediaType }: MainContent) => {
         <Section
           id="seasons&episodes"
           title="Seasons & Episodes"
-          classes={{ headerTitle: "text-xl", header: "flex justify-between" }}
+          classes={{
+            container: "mt-10",
+            headerTitle: "text-xl",
+            header: "flex justify-between",
+          }}
           headerContent={<SeasonPicker seasons={seasons} />}
         >
           <Collections>
@@ -186,7 +226,11 @@ const MainContent = ({ result, title, genres, mediaType }: MainContent) => {
       )}
 
       {/* Section Videos */}
-      <Section id="extras" title="Extras" classes={{ headerTitle: "text-xl" }}>
+      <Section
+        id="extras"
+        title="Extras"
+        classes={{ headerTitle: "text-xl", container: "mt-10" }}
+      >
         <Collections>
           {!videos
             ? Array(20)
@@ -203,7 +247,11 @@ const MainContent = ({ result, title, genres, mediaType }: MainContent) => {
       </Section>
 
       {/* Section Cast */}
-      <Section id="casts" title="Casts" classes={{ headerTitle: "text-xl" }}>
+      <Section
+        id="casts"
+        title="Casts"
+        classes={{ headerTitle: "text-xl", container: "mt-10" }}
+      >
         <Collections>
           {!result
             ? Array(20)
@@ -223,7 +271,7 @@ const MainContent = ({ result, title, genres, mediaType }: MainContent) => {
       <Section
         id="backdrops"
         title="Backdrops"
-        classes={{ headerTitle: "text-xl" }}
+        classes={{ headerTitle: "text-xl", container: "mt-10" }}
       >
         <Collections>
           {!result
