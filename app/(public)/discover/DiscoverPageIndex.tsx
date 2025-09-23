@@ -9,15 +9,19 @@ const DiscoverPageIndex = () => {
   const { data } = useSearchStore();
   const result = data?.results;
 
-  console.log(result);
-
   return (
     <div>
       {/* Hero */}
       <HeroSection />
 
       {/* Result */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-12">
+      {!result && (
+        <span className="font-light block mt-6 text-center">
+          Search results will shown here
+        </span>
+      )}
+
+      <div className="grid grid-cols-2 min-h-40 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-12">
         {result &&
           Array.isArray(result) &&
           result.map((item) => <CollectionsCard key={item.id} data={item} />)}
